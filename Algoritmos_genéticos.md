@@ -54,109 +54,157 @@ Em linguagens orientadas a objetos, variáveis guardam **referências** (endere�
 Aluno aTmp = a.clone();
 Aluno bTmp = b.clone();
 metodo(aTmp, bTmp);
-
-Sem o clone(), modificar aTmp modificaria o objeto original a, corrompendo a busca.
-
-3. Sistemas de Comportamento Inteligente
-
+```
+ 
+Sem o `clone()`, modificar `aTmp` modificaria o objeto original `a`, corrompendo a busca.
+ 
+---
+ 
+## 3. Sistemas de Comportamento Inteligente
+ 
 Um sistema inteligente é composto por três pilares:
-
-┌─────────────────────────────────────────┐
-│     SISTEMA DE COMPORTAMENTO            │
-│           INTELIGENTE                   │
-├───────────────┬─────────────┬───────────┤
-│  Base de      │  Motor de   │Aprendizado│
-│Conhecimento   │ Raciocínio  │de Máquina │
-│               │             │           │
-│ Representar   │ Métodos de  │  ML / IA  │
-│ e raciocinar  │   busca     │ simbólica │
-└───────────────┴─────────────┴───────────┘
-
+ 
+| Base de Conhecimento | Motor de Raciocínio | Aprendizado de Máquina |
+|---|---|---|
+| Representar e raciocinar | Métodos de busca | ML / IA simbólica |
+ 
 O principal desafio da base de conhecimento é representar o conhecimento de forma que o motor possa raciocinar sobre ele.
-
-4. Paradigmas de Programação
-
+ 
+---
+ 
+## 4. Paradigmas de Programação
+ 
 Paradigmas definem como o programador expressa soluções.
-
-4.1 Imperativo
-
-"Diga ao computador o quê, como e quando fazer."
-
+ 
+### 4.1 Imperativo
+ 
+> "Diga ao computador o quê, como e quando fazer."
+ 
+```java
 int soma = 0;
 for (int x : lista) {
     soma += x;
 }
-4.2 Lógico
-
-"Diga ao computador o quê e quando — ele descobre o como."
-
+```
+ 
+### 4.2 Lógico
+ 
+> "Diga ao computador o quê e quando — ele descobre o como."
+ 
+```prolog
 pai(joao, maria).
 irmao(X, Y) :- pai(P, X), pai(P, Y), X \= Y.
-4.3 Funcional
-
-"Diga ao computador o quê via composição de funções."
-
+```
+ 
+### 4.3 Funcional
+ 
+> "Diga ao computador o quê via composição de funções."
+ 
+```haskell
 soma [] = 0
 soma (x:xs) = x + soma xs
-4.4 Comparativo
-Paradigma	O Quê	Como	Quando
-Imperativo	✅	✅	✅
-Lógico	✅	❌	✅
-Funcional	✅	❌	✅
-5. Prolog — Paradigma Lógico
-5.1 Elementos
-Elemento	Exemplo
-Átomo	zeno
-Variável	X
-String	"Zeno"
-5.2 Fatos
+```
+ 
+### 4.4 Comparativo
+ 
+| Paradigma | O Quê | Como | Quando |
+|---|---|---|---|
+| Imperativo | ✅ | ✅ | ✅ |
+| Lógico | ✅ | ❌ | ✅ |
+| Funcional | ✅ | ❌ | ✅ |
+ 
+---
+ 
+## 5. Prolog — Paradigma Lógico
+ 
+### 5.1 Elementos
+ 
+| Elemento | Exemplo |
+|---|---|
+| Átomo | `zeno` |
+| Variável | `X` |
+| String | `"Zeno"` |
+ 
+### 5.2 Fatos
+ 
+```prolog
 progenitor(zeno, jurandir).
-5.3 Regras
+```
+ 
+### 5.3 Regras
+ 
+```prolog
 irmaos(A, B) :-
     progenitor(P, A),
     progenitor(P, B),
     A \= B.
-5.4 Grafos
+```
+ 
+### 5.4 Grafos
+ 
+```prolog
 caminho(O, D) :-
     conecta(O, I),
     caminho(I, D).
-6. Algoritmos Genéticos (Busca Heurística Populacional)
-
+```
+ 
+---
+ 
+## 6. Algoritmos Genéticos (Busca Heurística Populacional)
+ 
 Os Algoritmos Genéticos (AGs) são métodos de busca heurística inspirados na evolução natural.
-
+ 
 Testam várias soluções ao mesmo tempo e evoluem ao longo das gerações.
-
-6.1 Ideia Central
-Indivíduo = solução
-População = conjunto de soluções
-Evolução ao longo de gerações
-6.2 Componentes
-Componente	Função
-População	Soluções
-Fitness	Qualidade
-Seleção	Escolha
-Cruzamento	Combinação
-Mutação	Variação
-Elitismo	Melhores sobrevivem
-6.3 Fitness
-Boa solução → fitness alto
-Solução ruim → fitness baixo
-Aproxima da solução → recompensa
-Viola restrição → penaliza
-6.4 Processo
-Gerar população
-Avaliar fitness
-Selecionar melhores
-Cruzar e mutar
-Repetir
-6.5 Características
-Paralelismo
-Heurística dinâmica
-Não garante ótimo
-Boa para alta complexidade
-6.6 Comparação
-Método	Estratégia
-Hill Climbing	Local
+ 
+### 6.1 Ideia Central
+ 
+- Indivíduo = solução
+- População = conjunto de soluções
+- Evolução ao longo de gerações
+### 6.2 Componentes
+ 
+| Componente | Função |
+|---|---|
+| População | Soluções |
+| Fitness | Qualidade |
+| Seleção | Escolha |
+| Cruzamento | Combinação |
+| Mutação | Variação |
+| Elitismo | Melhores sobrevivem |
+ 
+### 6.3 Fitness
+ 
+- Boa solução → fitness alto
+- Solução ruim → fitness baixo
+- Aproxima da solução → recompensa
+- Viola restrição → penaliza
+### 6.4 Processo
+ 
+1. Gerar população
+2. Avaliar fitness
+3. Selecionar melhores
+4. Cruzar e mutar
+5. Repetir
+### 6.5 Características
+ 
+- Paralelismo
+- Heurística dinâmica
+- Não garante ótimo
+- Boa para alta complexidade
+### 6.6 Comparação
+ 
+| Método | Estratégia |
+|---|---|
+| Hill Climbing | Local |
+| A* | Caminho ótimo |
+| Genético | Evolução |
+ 
+### 6.7 Quando usar
+ 
+- Problemas complexos
+- Muitas restrições
+- Espaço grande
+ 
 A*	Caminho ótimo
 Genético	Evolução
 6.7 Quando usar
